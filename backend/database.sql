@@ -19,3 +19,5 @@ CREATE TABLE IF NOT EXISTS items (
 );
 SHOW TABLES;
 select * from items;
+SELECT * FROM users;
+ALTER TABLE items ADD COLUMN status VARCHAR(20) DEFAULT 'active';

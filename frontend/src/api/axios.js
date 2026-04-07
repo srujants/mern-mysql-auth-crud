@@ -1,22 +1,20 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5001'
+  baseURL: 'http://localhost:5050'
 });
 
-// ✅ Inject token automatically
+
 API.interceptors.request.use((req) => {
   const token =
     localStorage.getItem("token") ||
     sessionStorage.getItem("token");
 
-  if (token) {
-    req.headers.Authorization = token;
-  }
+  if (token) req.headers.Authorization = token;
   return req;
 });
 
-// ✅ Handle 401 (auto logout)
+
 API.interceptors.response.use(
   res => res,
   err => {

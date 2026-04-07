@@ -1,13 +1,13 @@
 const db = require('../config/db');
 
-// ➕ CREATE ITEM
+
 exports.createItem = async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, status } = req.body;
 
   try {
     await db.query(
-      "INSERT INTO items (user_id, title, description) VALUES (?, ?, ?)",
-      [req.user.id, title, description]
+      "INSERT INTO items (user_id, title, description, status) VALUES (?, ?, ?, ?)",
+      [req.user.id, title, description, status || 'active'] // ✅ FIX
     );
 
     res.json({ message: "Item created ✅" });
@@ -17,7 +17,7 @@ exports.createItem = async (req, res) => {
   }
 };
 
-// 📄 GET ALL ITEMS
+
 exports.getItems = async (req, res) => {
   try {
     const [items] = await db.query(
@@ -32,14 +32,14 @@ exports.getItems = async (req, res) => {
   }
 };
 
-// ✏️ UPDATE ITEM
+
 exports.updateItem = async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, status } = req.body;
 
   try {
     await db.query(
-      "UPDATE items SET title = ?, description = ? WHERE id = ? AND user_id = ?",
-      [title, description, req.params.id, req.user.id]
+      "UPDATE items SET title = ?, description = ?, status = ? WHERE id = ? AND user_id = ?",
+      [title, description, status, req.params.id, req.user.id] // ✅ FIX
     );
 
     res.json({ message: "Item updated ✅" });
@@ -49,7 +49,7 @@ exports.updateItem = async (req, res) => {
   }
 };
 
-// ❌ DELETE ITEM
+
 exports.deleteItem = async (req, res) => {
   try {
     await db.query(

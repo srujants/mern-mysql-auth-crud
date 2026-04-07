@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* ✅ If token exists → go dashboard */}
+        {/* If token exists → go dashboard */}
         <Route
           path="/"
           element={token ? <Navigate to="/dashboard" /> : <Login />}
@@ -27,7 +27,7 @@ function App() {
         <Route path="/forgot" element={<ForgotPassword />} />
         <Route path="/reset" element={<ResetPassword />} />
 
-        {/* ✅ Protect dashboard */}
+        {/*  Protect dashboard */}
         <Route
           path="/dashboard"
           element={token ? <Dashboard /> : <Navigate to="/" />}
