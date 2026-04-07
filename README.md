@@ -148,7 +148,8 @@ http://localhost:5173
 <img width="1710" height="1112" alt="Screenshot 2026-04-07 at 7 41 37 PM" src="https://github.com/user-attachments/assets/7c3a38bd-42fd-4905-a854-902a5af4fab6" />
 
 * Dashboard Page
-<img width="1710" height="1112" alt="dashboard" src="https://github.com/user-attachments/assets/c94d95ac-6263-4508-aba0-cfd8eab2067c" />
+<img width="1710" height="1112" alt="dashboard" src="https://github.com/user-attachments/assets/afe01210-663e-4d00-b403-42d46398f59e" />
+
 
 ---
 
