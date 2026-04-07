@@ -134,12 +134,19 @@ http://localhost:5173
 
 ## Screenshots
 
-(Add screenshots here)
-
+<img width="1710" height="1112" alt="login" src="https://github.com/user-attachments/assets/301580cf-bdbc-454f-bd7c-ea98d3440883" />
 * Login Page
+
+<img width="1710" height="1112" alt="register" src="https://github.com/user-attachments/assets/d5a9aaac-5ed1-4cce-8dea-e8f07d352201" />
 * Register Page
+
+<img width="1710" height="1112" alt="forgot_password" src="https://github.com/user-attachments/assets/2a409228-5b85-48cd-9bb6-1536bd3415c9" />
 * Forgot Password Page
+
+<img width="1710" height="1112" alt="reset-password" src="https://github.com/user-attachments/assets/1254eaa1-1581-4e9d-a39c-7bce24909d99" />
 * Reset Password Page
+
+<img width="1710" height="1112" alt="dashboard" src="https://github.com/user-attachments/assets/79727b26-2e85-4f6b-ad3d-0a2d4ab5dd28" />
 * Dashboard Page
 
 ---
