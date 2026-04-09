@@ -1,48 +1,60 @@
-import { useState } from 'react';
-import { resetPassword } from '../api/authApi';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ResetPassword() {
+export default function ResetPassword() {
 
-  const [password, setPassword] = useState('');
-  const [confirm, setConfirm] = useState('');
+  const [form, setForm] = useState({
+    newPassword: "",
+    confirmPassword: ""
+  });
 
-  const email = new URLSearchParams(window.location.search).get("email");
+  const navigate = useNavigate();
 
-  const handleReset = async () => {
-    if (password !== confirm) return alert("Passwords mismatch");
+  const handleReset = () => {
 
-    await resetPassword({ email, password });
+    const { newPassword, confirmPassword } = form;
 
-    alert("Password updated");
-    window.location.href = "/";
+    if (!newPassword || !confirmPassword) {
+      return alert("All fields are required");
+    }
+
+    if (newPassword !== confirmPassword) {
+      return alert("Passwords do not match");
+    }
+
+    alert("Password updated successfully!");
+    navigate("/");
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-200 via-blue-200 to-indigo-200">
 
-      <div className="bg-white p-6 rounded shadow w-80">
+      <div className="bg-white/80 backdrop-blur-lg p-8 rounded-xl shadow-xl w-80">
 
-        <h2 className="text-center mb-4">Reset Password</h2>
+        <h2 className="text-center text-xl font-bold mb-4">Reset Password</h2>
 
-        <input type="password"
-          className="border p-2 w-full mb-2"
+        <input
+          type="password"
           placeholder="New Password"
-          onChange={(e) => setPassword(e.target.value)} />
+          className="w-full border p-3 mb-3 rounded-lg"
+          onChange={(e) => setForm({ ...form, newPassword: e.target.value })}
+        />
 
-        <input type="password"
-          className="border p-2 w-full mb-3"
+        <input
+          type="password"
           placeholder="Confirm Password"
-          onChange={(e) => setConfirm(e.target.value)} />
+          className="w-full border p-3 mb-3 rounded-lg"
+          onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
+        />
 
         <button
           onClick={handleReset}
-          className="bg-green-500 text-white w-full p-2 rounded">
-          Reset
+          className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white p-3 rounded-lg"
+        >
+          Update Password
         </button>
 
       </div>
     </div>
   );
 }
-
-export default ResetPassword;

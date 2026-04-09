@@ -1,80 +1,80 @@
-import { useState } from 'react';
-import { loginUser } from '../api/authApi';
-import useAuth from '../hooks/useAuth';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { loginUser } from "../api/authApi";
 
-function Login() {
+export default function Login() {
+  const [form, setForm] = useState({ email: "", password: "" });
   const { login } = useAuth();
-
-  const [form, setForm] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
 const handleLogin = async () => {
   try {
+    if (!form.email || !form.password) {
+      return alert("Please fill all fields");
+    }
+
     const res = await loginUser(form);
 
-   
-    login(
-      res.data.token,
-      true,
-      res.data.user
-    );
+    console.log("LOGIN RESPONSE:", res.data); // DEBUG
 
-    window.location.href = "/dashboard";
+    login(res.data.token, true, res.data.user);
 
-  } catch {
-    alert("Login failed");
+    // ✅ FORCE NAVIGATION (WORKS ALWAYS)
+    setTimeout(() => {
+      window.location.href = "/dashboard";
+    }, 100);
+
+  } catch (err) {
+    alert(err.response?.data?.message || "Login failed");
   }
 };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200">
 
-      <div className="bg-white p-8 rounded shadow-md w-80 text-center">
+      <div className="bg-white/80 backdrop-blur-lg p-8 rounded-xl shadow-xl w-80">
 
-        <h2 className="text-2xl font-bold mb-6">Login</h2>
+        <h2 className="text-center text-2xl font-bold mb-4 text-gray-700">Login</h2>
 
-        {/* INPUTS LINE BY LINE */}
-        <div className="flex flex-col gap-3">
+        <input
+          className="w-full border p-3 mb-3 rounded-lg focus:ring-2 focus:ring-indigo-400"
+          placeholder="Email"
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
 
-          <input
-            type="text"
-            placeholder="Email"
-            className="border p-2 w-full rounded"
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-          />
+        <input
+          type="password"
+          className="w-full border p-3 mb-3 rounded-lg focus:ring-2 focus:ring-indigo-400"
+          placeholder="Password"
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        />
 
-          <input
-            type="password"
-            placeholder="Password"
-            className="border p-2 w-full rounded"
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
-          />
+        <button
+          onClick={handleLogin}
+          className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-3 rounded-lg shadow hover:scale-105 transition"
+        >
+          Login
+        </button>
 
-          <button
-            onClick={handleLogin}
-            className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-          >
-            Login
-          </button>
+        <p
+  onClick={() => navigate("/forgot")}
+  className="text-center text-sm text-indigo-600 cursor-pointer mt-2"
+>
+  Forgot Password?
+</p>
 
-        </div>
-
-        {/* LINKS */}
-        <div className="mt-4 text-sm">
-          <a href="/forgot" className="text-blue-500 block mb-2">
-            Forgot Password?
-          </a>
-
-          <p>
-            Don’t have an account?{" "}
-            <a href="/register" className="text-green-500 font-semibold">
-              Register
-            </a>
-          </p>
-        </div>
+<p className="text-center text-sm mt-2">
+  Don’t have an account?{" "}
+  <span
+    onClick={() => navigate("/register")}
+    className="text-indigo-600 cursor-pointer"
+  >
+    Register
+  </span>
+</p>
 
       </div>
     </div>
   );
 }
-
-export default Login;

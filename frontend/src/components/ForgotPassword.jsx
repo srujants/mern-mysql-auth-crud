@@ -1,30 +1,36 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ForgotPassword() {
+export default function ForgotPassword() {
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    alert("Reset link sent");
-    window.location.href = `/reset?email=${email}`;
-  };
+const handleSubmit = () => {
 
+  if (!email) {
+    return alert("Email is required");
+  }
+
+  alert("Reset link sent!");
+  navigate("/reset");
+};
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-200 via-pink-200 to-purple-200">
 
-      <div className="bg-white p-6 rounded shadow w-80 text-center">
+      <div className="bg-white/80 backdrop-blur-lg p-8 rounded-xl shadow-xl w-80">
 
-        <h2 className="text-lg mb-4">Forgot Password</h2>
+        <h2 className="text-center text-xl font-bold mb-4">Forgot Password</h2>
 
         <input
-          className="border p-2 w-full mb-3"
-          placeholder="Email"
+          placeholder="Enter Email"
+          className="w-full border p-3 mb-3 rounded-lg"
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <button
           onClick={handleSubmit}
-          className="bg-blue-500 text-white w-full p-2 rounded"
+          className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-3 rounded-lg"
         >
           Send Reset Link
         </button>
@@ -33,5 +39,3 @@ function ForgotPassword() {
     </div>
   );
 }
-
-export default ForgotPassword;
