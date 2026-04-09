@@ -135,20 +135,23 @@ http://localhost:5173
 ## Screenshots
 
 * Login Page
-<img width="1710" height="1112" alt="login" src="https://github.com/user-attachments/assets/fbc28aa2-866d-4f6a-84fc-d2f4e326a169" />
+
+<img width="1710" height="1112" alt="login" src="https://github.com/user-attachments/assets/f344a545-1ede-4a27-908c-5c653656b280" />
 
 * Register Page
-<img width="1710" height="1112" alt="register" src="https://github.com/user-attachments/assets/b17dae6b-daed-45dd-a5f5-09dea8647e0c" />
+<img width="1710" height="1112" alt="register" src="https://github.com/user-attachments/assets/3c740450-01c4-40a8-926f-226433a026e6" />
+
 
 
 * Forgot Password Page
-<img width="1710" height="1112" alt="Screenshot 2026-04-07 at 7 41 19 PM" src="https://github.com/user-attachments/assets/c6a34b53-c1fa-4257-bf40-bfc7856c8abe" />
+<img width="1710" height="1112" alt="forgotpassword" src="https://github.com/user-attachments/assets/85564dd9-7e3a-4b50-b587-75543a690f08" />
+
 
 * Reset Password Page
-<img width="1710" height="1112" alt="Screenshot 2026-04-07 at 7 41 37 PM" src="https://github.com/user-attachments/assets/7c3a38bd-42fd-4905-a854-902a5af4fab6" />
+<img width="1710" height="1112" alt="resetlink" src="https://github.com/user-attachments/assets/c1ff3d2a-1d9a-47f1-8e9d-c2e97b76073d" />
 
 * Dashboard Page
-<img width="1710" height="1112" alt="dashboard" src="https://github.com/user-attachments/assets/afe01210-663e-4d00-b403-42d46398f59e" />
+<img width="1710" height="1112" alt="dashboard" src="https://github.com/user-attachments/assets/b24301a8-22ef-4b4c-9f4b-45c0e0e2733b" />
 
 
 ---
